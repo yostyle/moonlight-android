@@ -132,8 +132,10 @@ public class MediaCodecHelper {
 		// Sony ATVs have broken MediaTek codecs (decoder hangs after rendering the first frame).
 		// I know the Fire TV 2 works, so I'll just whitelist Amazon devices which seem
 		// to actually be tested. Ugh...
-		if (Build.MANUFACTURER.equalsIgnoreCase("Amazon")) {
+		if (Build.MANUFACTURER.equalsIgnoreCase("Amazon")
+				|| Build.MANUFACTURER.equalsIgnoreCase("Philips")) {
 			whitelistedHevcDecoders.add("omx.mtk");
+			LimeLog.info("Added omx.mtk to HEVC decoders white list");
 		}
 
 		// These theoretically have good HEVC decoding capabilities (potentially better than
